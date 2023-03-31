@@ -11,11 +11,23 @@ add([
 ])
 
 
-add([
-    sprite("gwiazda")
+const gwiazda = add([
+    sprite("gwiazda"),
+    pos(0,30)
 ])
 
 
-add([
-    play("muzyka")
-])
+onMouseRelease(()=>play("muzyka"))
+
+let wprawo = true
+
+onUpdate(()=>{
+    if(wprawo && gwiazda.pos.x < 550)
+         gwiazda.pos.x += 1
+    
+    else if(!wprawo && gwiazda.pos.x > 50)
+        gwiazda.pos.x -= 1
+
+        else wprawo ^=true
+
+})
